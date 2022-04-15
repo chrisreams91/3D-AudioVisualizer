@@ -1,0 +1,26 @@
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #6d6c6c;
+}
+
+#root::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/test.png");
+  background-repeat: no-repeat;
+  background-position: bottom 10px left 10px;
+  background-size: 10%;
+  pointer-events: none;
+}
