@@ -19,8 +19,9 @@ const Visualizer = ({ url }: VisualizerProps) => {
   const width = 0.4;
   const depth = 0.2;
 
-  const spectrumWidth = 30;
-  const spectrumValueOffset = 65;
+  // tinker
+  const spectrumWidth = 50;
+  const spectrumValueOffset = 75;
   const decay = 0;
 
   const ref = useRef();

@@ -11,7 +11,7 @@ interface BarProps {
 const Bar = ({ position, color, width, height, depth }: BarProps) => {
   return (
     <mesh
-      position={new THREE.Vector3(position / 1.8, 0, 0)}
+      position={new THREE.Vector3(position / 1.8, 0, 10)}
       name={`Bar - ${position}`}
     >
       <boxGeometry args={[width, height, depth]} />

@@ -43,7 +43,6 @@ const Terminal = () => {
     newVid.src = videos[selectedButton];
     setVideo(newVid);
     video.play();
-    console.log(video);
   }, [selectedButton, video]);
 
   const buttons = [

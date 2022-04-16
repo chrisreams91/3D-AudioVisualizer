@@ -4,8 +4,8 @@ import Floor from "./RandomComponents/Floor";
 import Visualizer from "./AudioVisualizer/Visualizer";
 //@ts-ignore
 import { FPSControls } from "react-three-fpscontrols";
-
 import SkyBox from "./RandomComponents/Skybox";
+import Model from "./RandomComponents/Model";
 const { songs } = require("./assets/index");
 
 const App = () => {
@@ -13,20 +13,12 @@ const App = () => {
     <Canvas>
       <pointLight intensity={0.5} />
       <ambientLight intensity={2} />
-      <spotLight
-        castShadow
-        intensity={0.2}
-        angle={Math.PI / 7}
-        position={[150, 150, 250]}
-        penumbra={1}
-        shadow-mapSize-width={2048}
-        shadow-mapSize-height={2048}
-      />
+      <spotLight castShadow intensity={0.2} />
       <FPSControls
         camProps={{
           makeDefault: true,
           fov: 100,
-          position: [0, 0, 8],
+          position: [0, 0, 50],
         }}
         orbitProps={{
           target: [0, 0, 0],
@@ -35,9 +27,10 @@ const App = () => {
       />
       <Suspense fallback={null}>
         <Visualizer url={songs[0]} />
+        {/* <Model /> */}
       </Suspense>
       <SkyBox />
-      <Floor />
+      {/* <Floor /> */}
     </Canvas>
   );
 };
