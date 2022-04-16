@@ -1,11 +1,9 @@
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import Floor from "./RandomComponents/Floor";
 import Visualizer from "./AudioVisualizer/Visualizer";
 //@ts-ignore
 import { FPSControls } from "react-three-fpscontrols";
 import SkyBox from "./RandomComponents/Skybox";
-import Model from "./RandomComponents/Model";
 const { songs } = require("./assets/index");
 
 const App = () => {
@@ -18,7 +16,7 @@ const App = () => {
         camProps={{
           makeDefault: true,
           fov: 100,
-          position: [0, 0, 50],
+          position: [0, 0, 30],
         }}
         orbitProps={{
           target: [0, 0, 0],
@@ -27,10 +25,8 @@ const App = () => {
       />
       <Suspense fallback={null}>
         <Visualizer url={songs[0]} />
-        {/* <Model /> */}
       </Suspense>
       <SkyBox />
-      {/* <Floor /> */}
     </Canvas>
   );
 };
