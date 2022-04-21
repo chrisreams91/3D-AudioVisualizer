@@ -15,6 +15,9 @@ const sunset = require("./sunset.mp3");
 // const shadows = require("./shadows.mp3");
 // const deepBlue = require("./deepBlue.mp3");
 
+// const endless = require("./endless.mp3");
+// const echobo = require("./echobo.mp3");
+
 export const songs = [
   // nobody,
   // conAltura,
@@ -30,6 +33,8 @@ export const songs = [
   // jason,
   // shadows,
   // deepBlue,
+  // endless,
+  // echobo,
 ];
 
 // skybox

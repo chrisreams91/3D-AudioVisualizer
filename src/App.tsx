@@ -4,6 +4,8 @@ import Visualizer from "./AudioVisualizer/Visualizer";
 //@ts-ignore
 import { FPSControls } from "react-three-fpscontrols";
 import SkyBox from "./RandomComponents/Skybox";
+import Model from "./RandomComponents/Model";
+import DroneProjector from "./DroneProjector/DroneProjector";
 const { songs } = require("./assets/index");
 
 const App = () => {
@@ -16,7 +18,7 @@ const App = () => {
         camProps={{
           makeDefault: true,
           fov: 100,
-          position: [0, 0, 30],
+          position: [0, 20, -40],
         }}
         orbitProps={{
           target: [0, 0, 0],
@@ -24,7 +26,7 @@ const App = () => {
         enableKeyboard
       />
       <Suspense fallback={null}>
-        <Visualizer url={songs[0]} />
+        <DroneProjector />
       </Suspense>
       <SkyBox />
     </Canvas>
