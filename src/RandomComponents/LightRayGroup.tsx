@@ -39,7 +39,7 @@ const LightRayGroup = ({ rayCount = 5, distance }: Props) => {
   const light5x = light4x + distanceBetween;
 
   useFrame((state) => {
-    if (state.clock.elapsedTime - timeElapsed > 0.2) {
+    if (state.clock.elapsedTime - timeElapsed > 0.1) {
       light1.target.position.x = randomNumInRange(light1x + 1, widthVariance);
       light1.target.position.y = randomNumInRange(1, heightVariance);
 
