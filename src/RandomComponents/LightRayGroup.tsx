@@ -75,7 +75,20 @@ const LightRayGroup = ({ rayCount = 5, distance }: Props) => {
     if (light5) {
       light5.target.position.x = light5x;
     }
-  }, [obj, light1, light2, light3, light4, light5]);
+  }, [
+    // yuck
+    obj,
+    light1,
+    light1x,
+    light2,
+    light2x,
+    light3,
+    light3x,
+    light4,
+    light4x,
+    light5,
+    light5x,
+  ]);
 
   return (
     <group position={[0, 0, 20]}>
