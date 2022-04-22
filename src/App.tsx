@@ -11,16 +11,16 @@ const App = () => {
   return (
     <Canvas>
       {/* <pointLight intensity={0.5} /> */}
-      <ambientLight intensity={1} />
+      <ambientLight intensity={2.5} />
       {/* <spotLight castShadow intensity={0.2} /> */}
       <FPSControls
         camProps={{
           makeDefault: true,
           fov: 100,
-          position: [0, 20, -40],
+          position: [0, 10, 20],
         }}
         orbitProps={{
-          target: [0, 0, 0],
+          target: [5, 5, 0],
         }}
         enableKeyboard
       />
