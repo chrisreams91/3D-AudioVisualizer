@@ -26,7 +26,7 @@ const LightRayGroup = ({ rayCount = 5, distance }: Props) => {
   let obj: any;
 
   let timeElapsed = 0;
-  const heightVariance = 1;
+  const heightVariance = 2;
   const widthVariance = 2;
 
   const startingPoint = 0;
