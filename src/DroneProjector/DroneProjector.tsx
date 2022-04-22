@@ -9,7 +9,6 @@ const DroneProjector = () => {
   return (
     <>
       <Model
-        // @ts-ignore
         name="/k07.glb"
         position={[10, 10.9, -20.5]}
         scale={[0.1, 0.1, 0.1]}

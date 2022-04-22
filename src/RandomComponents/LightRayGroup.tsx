@@ -7,45 +7,53 @@ interface Props {
   rayCount?: number;
   distance: number;
 }
-const LightRayGroup = ({ rayCount = 4, distance }: Props) => {
+
+const randomNumInRange = (min: number, range: number) => {
+  const max = min + range;
+  const result = Math.random() * (max - min) + min;
+  return result;
+};
+
+const LightRayGroup = ({ rayCount = 5, distance }: Props) => {
   const depthBuffer = useDepthBuffer();
 
   let light1: any;
   let light2: any;
   let light3: any;
   let light4: any;
+  let light5: any;
+
   let obj: any;
 
   let timeElapsed = 0;
-  let x = true;
+  const heightVariance = 1;
+  const widthVariance = 2;
+
+  const startingPoint = 0;
+  const distanceBetween = 5;
+
+  const light1x = startingPoint;
+  const light2x = light1x + distanceBetween;
+  const light3x = light2x + distanceBetween;
+  const light4x = light3x + distanceBetween;
+  const light5x = light4x + distanceBetween;
 
   useFrame((state) => {
-    if (state.clock.elapsedTime - timeElapsed > 0.1) {
-      if (x) {
-        const prev1 = light1.target.position.x !== 5;
-        light1.target.position.x = prev1 ? 5 : 3;
-        const prev2 = light2.target.position.y !== 1;
-        light2.target.position.y = prev2 ? 1 : 2;
-        const prev3 = light3.target.position.x !== 15;
-        light3.target.position.x = prev3 ? 15 : 13;
-        const prev4 = light4.target.position.y !== 1;
-        light4.target.position.y = prev4 ? 1 : 2;
-        x = false;
-      } else {
-        const prev1 = light1.target.position.y !== 1;
-        light1.target.position.y = prev1 ? 1 : 2;
+    if (state.clock.elapsedTime - timeElapsed > 0.2) {
+      light1.target.position.x = randomNumInRange(light1x, widthVariance);
+      light1.target.position.y = randomNumInRange(1, heightVariance);
 
-        const prev2 = light2.target.position.x !== 10;
-        light2.target.position.x = prev2 ? 10 : 8;
+      light2.target.position.x = randomNumInRange(light2x, widthVariance);
+      light2.target.position.y = randomNumInRange(1, heightVariance);
 
-        const prev3 = light3.target.position.y !== 1;
-        light3.target.position.y = prev3 ? 1 : 2;
+      light3.target.position.x = randomNumInRange(light3x, widthVariance);
+      light3.target.position.y = randomNumInRange(1, heightVariance);
 
-        const prev4 = light4.target.position.x !== 20;
-        light4.target.position.x = prev4 ? 20 : 17;
+      light4.target.position.x = randomNumInRange(light4x, widthVariance);
+      light4.target.position.y = randomNumInRange(1, heightVariance);
 
-        x = true;
-      }
+      light5.target.position.x = randomNumInRange(light5x, widthVariance);
+      light5.target.position.y = randomNumInRange(1, heightVariance);
 
       timeElapsed = state.clock.elapsedTime;
     }
@@ -53,18 +61,21 @@ const LightRayGroup = ({ rayCount = 4, distance }: Props) => {
 
   useEffect(() => {
     if (light1) {
-      light1.target.position.x = 5;
+      light1.target.position.x = light1x;
     }
     if (light2) {
-      light2.target.position.x = 10;
+      light2.target.position.x = light2x;
     }
     if (light3) {
-      light3.target.position.x = 15;
+      light3.target.position.x = light3x;
     }
     if (light4) {
-      light4.target.position.x = 20;
+      light4.target.position.x = light4x;
     }
-  }, [obj, light1, light2, light3, light4]);
+    if (light5) {
+      light5.target.position.x = light5x;
+    }
+  }, [obj, light1, light2, light3, light4, light5]);
 
   return (
     <group position={[0, 0, 20]}>
@@ -74,6 +85,7 @@ const LightRayGroup = ({ rayCount = 4, distance }: Props) => {
           // @ts-ignore
           //   shadow={true}
           //   power={0}
+          key={index}
           target={obj}
           depthBuffer={depthBuffer}
           ref={(ref) => {
@@ -89,12 +101,15 @@ const LightRayGroup = ({ rayCount = 4, distance }: Props) => {
             if (index === 3) {
               light4 = ref;
             }
+            if (index === 4) {
+              light5 = ref;
+            }
           }}
           // penumbra={0}
-          distance={index === 0 || index === 3 ? distance + 2 : distance}
+          distance={index === 0 || index === 4 ? distance + 2 : distance}
           attenuation={30}
           intensity={0.5}
-          angle={0.2}
+          angle={0.1}
           color="#521566"
         />
       ))}
