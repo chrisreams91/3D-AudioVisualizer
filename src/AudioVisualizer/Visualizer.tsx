@@ -20,7 +20,7 @@ const Visualizer = ({ url }: VisualizerProps) => {
   const depth = 0.2;
 
   // tinker
-  const spectrumWidth = 50;
+  const spectrumWidth = 45;
   const spectrumValueOffset = 75;
   const decay = 0;
 

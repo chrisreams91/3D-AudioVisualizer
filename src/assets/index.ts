@@ -9,14 +9,16 @@
 // const darkClouds = require("./darkClouds.mp3");
 // const throughTheWire = require("./throughTheWire.mp3");
 // const andIStill = require("./andIStill.mp3");
-const sunset = require("./sunset.mp3");
+// const sunset = require("./sunset.mp3");
 // const daysOfThunder = require("./daysOfThunder.mp3");
 // const jason = require("./jason.mp3");
 // const shadows = require("./shadows.mp3");
 // const deepBlue = require("./deepBlue.mp3");
-
 // const endless = require("./endless.mp3");
 // const echobo = require("./echobo.mp3");
+
+const bewareOfTheDog = require("./bewareOfTheDog.mp3");
+const keepTheFunk = require("./keepTheFunk.mp3");
 
 export const songs = [
   // nobody,
@@ -28,7 +30,9 @@ export const songs = [
   // darkClouds,
   // throughTheWire,
   // andIStill,
-  sunset,
+  // sunset,
+  keepTheFunk,
+  bewareOfTheDog,
   // daysOfThunder,
   // jason,
   // shadows,

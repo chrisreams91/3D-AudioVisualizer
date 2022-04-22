@@ -40,7 +40,7 @@ const LightRayGroup = ({ rayCount = 5, distance }: Props) => {
 
   useFrame((state) => {
     if (state.clock.elapsedTime - timeElapsed > 0.2) {
-      light1.target.position.x = randomNumInRange(light1x, widthVariance);
+      light1.target.position.x = randomNumInRange(light1x + 1, widthVariance);
       light1.target.position.y = randomNumInRange(1, heightVariance);
 
       light2.target.position.x = randomNumInRange(light2x, widthVariance);
@@ -52,7 +52,7 @@ const LightRayGroup = ({ rayCount = 5, distance }: Props) => {
       light4.target.position.x = randomNumInRange(light4x, widthVariance);
       light4.target.position.y = randomNumInRange(1, heightVariance);
 
-      light5.target.position.x = randomNumInRange(light5x, widthVariance);
+      light5.target.position.x = randomNumInRange(light5x - 1, widthVariance);
       light5.target.position.y = randomNumInRange(1, heightVariance);
 
       timeElapsed = state.clock.elapsedTime;
@@ -119,7 +119,13 @@ const LightRayGroup = ({ rayCount = 5, distance }: Props) => {
             }
           }}
           // penumbra={0}
-          distance={index === 0 || index === 4 ? distance + 2 : distance}
+          distance={
+            index === 0 || index === 4
+              ? distance + 2
+              : index === 2
+              ? distance - 0.5
+              : distance
+          }
           attenuation={30}
           intensity={0.5}
           angle={0.1}

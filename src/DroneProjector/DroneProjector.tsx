@@ -5,6 +5,10 @@ import LightRayGroup from "../RandomComponents/LightRayGroup";
 
 const { songs } = require("../assets/index");
 
+const min = Math.ceil(0);
+const max = Math.floor(1);
+const random = Math.floor(Math.random() * (max - min + 1)) + min;
+
 const DroneProjector = () => {
   return (
     <>
@@ -16,8 +20,8 @@ const DroneProjector = () => {
       <group position={[10, 10, -39]}>
         <LightRayGroup distance={27} />
       </group>
-      <group position={[2, -2, -3]}>
-        <Visualizer url={songs[0]} />
+      <group position={[3, -2, -3]}>
+        <Visualizer url={songs[random]} />
       </group>
     </>
   );
