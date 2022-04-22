@@ -1,19 +1,18 @@
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import Visualizer from "./AudioVisualizer/Visualizer";
+// import Visualizer from "./AudioVisualizer/Visualaizer";
 //@ts-ignore
 import { FPSControls } from "react-three-fpscontrols";
 import SkyBox from "./RandomComponents/Skybox";
-import Model from "./RandomComponents/Model";
+// import Model from "./RandomComponents/Model";
 import DroneProjector from "./DroneProjector/DroneProjector";
-const { songs } = require("./assets/index");
 
 const App = () => {
   return (
     <Canvas>
-      <pointLight intensity={0.5} />
-      <ambientLight intensity={2} />
-      <spotLight castShadow intensity={0.2} />
+      {/* <pointLight intensity={0.5} /> */}
+      <ambientLight intensity={1} />
+      {/* <spotLight castShadow intensity={0.2} /> */}
       <FPSControls
         camProps={{
           makeDefault: true,

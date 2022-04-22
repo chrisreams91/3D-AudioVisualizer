@@ -1,8 +1,7 @@
 import React from "react";
-import { useLoader } from "@react-three/fiber";
+import { useLoader, useFrame } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import * as THREE from "three";
-import { useFrame } from "@react-three/fiber";
 
 interface Props {
   name: string;
@@ -22,7 +21,7 @@ const Model = ({ name, scale, position = [0, 0, 0] }: Props) => {
     mixer.update(delta);
   });
 
-  return <primitive object={scene} scale={scale} position={[10, 10, -30]} />;
+  return <primitive object={scene} scale={scale} position={position} />;
 };
 
 export default Model;

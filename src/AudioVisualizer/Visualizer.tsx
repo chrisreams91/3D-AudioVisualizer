@@ -69,7 +69,7 @@ const Visualizer = ({ url }: VisualizerProps) => {
       ref={ref}
       args={[undefined, undefined, spectrumWidth]}
       name="instanced mesh 1111"
-      position={[-8, 2, 0]}
+      position={[-4, 2, -2]}
     >
       <mesh>
         {Array.from({ length: spectrumWidth }, (_, index) => (
