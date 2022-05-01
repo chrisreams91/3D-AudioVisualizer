@@ -1,7 +1,8 @@
 import React from "react";
 import Visualizer from "../AudioVisualizer/Visualizer";
 import Model from "../RandomComponents/Model";
-import LightRayGroup from "../RandomComponents/LightRayGroup";
+import Console from "./Console";
+import LightRayGroup from "./LightRayGroup";
 
 const { songs } = require("../assets/index");
 
@@ -23,6 +24,7 @@ const DroneProjector = () => {
       <group position={[3, -2, -3]}>
         <Visualizer url={songs[random]} />
       </group>
+      <Console />
     </>
   );
 };

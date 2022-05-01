@@ -95,9 +95,6 @@ const LightRayGroup = ({ rayCount = 5, distance }: Props) => {
       <Stats />
       {Array.from({ length: rayCount }, (_, index) => (
         <SpotLight
-          // @ts-ignore
-          //   shadow={true}
-          //   power={0}
           key={index}
           target={obj}
           depthBuffer={depthBuffer}
