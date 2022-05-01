@@ -1,5 +1,14 @@
 export const createAudio = async (url: string) => {
-  const res = await fetch(url);
+  const url1 = "https://youtu.be/hBi9wavp2w4";
+
+  const res = await fetch(`/audio`, {
+    method: "POST",
+    body: JSON.stringify({ url: url1 }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
   const buffer = await res.arrayBuffer();
   const context = new window.AudioContext();
   const source = context.createBufferSource();
