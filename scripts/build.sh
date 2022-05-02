@@ -1,8 +1,7 @@
 #!/bin/sh
-npm i
 
-sudo apt update
-sudo apt install ffmpeg
+apt update
+apt install ffmpeg
 which ffmpeg 
 # npm install --save @ffmpeg-installer/ffmpeg
 
@@ -16,4 +15,6 @@ which ffmpeg
 # FFMPEG_PATH=$(which ffmpeg)
 # echo $FFMPEG_PATH
 
+
+npm i
 npm run build
