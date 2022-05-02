@@ -4,6 +4,6 @@ to = "/index.html"
 status = 200
 
 [build]
-  command = "sudo sh ./scripts/build.sh"
+  command = "sh ./scripts/build.sh"
   functions = "lambda" #  netlify-lambda reads this
   publish = "build"
