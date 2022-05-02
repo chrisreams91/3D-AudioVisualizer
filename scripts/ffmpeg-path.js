@@ -6,6 +6,7 @@
 // console.log(`ffmpegDir : ${ffmpegDir}`);
 
 const ffmpegPath = require("@ffmpeg-installer/ffmpeg").path;
+console.log(`ffmpegPath : ${ffmpegPath}`);
+
 const ffmpeg = require("fluent-ffmpeg");
 ffmpeg.setFfmpegPath(ffmpegPath);
-// console.log(`${ffmpegDir}`);
