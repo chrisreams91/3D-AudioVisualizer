@@ -27,6 +27,7 @@
     "youtube-audio-stream": "^0.3.61"
   },
   "scripts": {
+    "local": "REACT_APP_ENVIRONMENT=dev node server-local.js",
     "start": "react-scripts start",
     "build": "run-p build:**",
     "build:app": "react-scripts build",
