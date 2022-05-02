@@ -4,7 +4,6 @@ export const createAudio = async (url: string) => {
   const x = ".netlify/functions/server";
   // const isLocal = process.env.NODE_ENV === "production";
 
-  console.log(process.env.REACT_APP_ENVIRONMENT);
   const res = await fetch(`${x}/audio`, {
     method: "POST",
     body: JSON.stringify({ url: url1 }),
