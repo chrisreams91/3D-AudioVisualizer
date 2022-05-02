@@ -7,13 +7,25 @@ const app = express();
 app.use(express.json());
 
 const router = express.Router();
-router.get("/", (req, res) => {
-  res.writeHead(200, { "Content-Type": "text/html" });
-  res.write("<h1>Hello from Express.js!</h1>");
-  res.end();
+router.get("/", (_, res) => {
+  res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
-router.get("/another", (req, res) => res.json({ route: req.originalUrl }));
-router.post("/", (req, res) => res.json({ postBody: req.body }));
+
+router.post("/audio", async (req, res) => {
+  try {
+    //@ts-ignore
+    for await (const chunk of stream(req.body.url)) {
+      res.write(chunk);
+    }
+    res.end();
+  } catch (err) {
+    console.error(err);
+    if (!res.headersSent) {
+      res.writeHead(500);
+      res.end("internal system error");
+    }
+  }
+});
 
 app.use("/.netlify/functions/server", router); // path must route to lambda
 // app.use("/", (req, res) => res.sendFile(path.join(__dirname, "../index.html")));
