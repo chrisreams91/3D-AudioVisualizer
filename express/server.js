@@ -3,6 +3,10 @@ const path = require("path");
 const serverless = require("serverless-http");
 const stream = require("youtube-audio-stream");
 
+const ffmpegPath = require("@ffmpeg-installer/ffmpeg").path;
+const ffmpeg = require("fluent-ffmpeg");
+ffmpeg.setFfmpegPath(ffmpegPath);
+
 const app = express();
 app.use(express.json());
 
