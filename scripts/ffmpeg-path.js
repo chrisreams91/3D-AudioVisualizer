@@ -10,4 +10,4 @@
 // console.log(`${ffmpegDir}`);
 
 var pathToFfmpeg = require("ffmpeg-static");
-console.log(pathToFfmpeg);
+console.log(`${pathToFfmpeg}`);
