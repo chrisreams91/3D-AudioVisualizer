@@ -15,6 +15,9 @@ router.post("/audio", async (req, res) => {
   try {
     //@ts-ignore
     for await (const chunk of stream(req.body.url)) {
+      if (chunk instanceof Error) {
+        res.end(chunk);
+      }
       console.log(chunk);
       res.write(chunk);
     }
