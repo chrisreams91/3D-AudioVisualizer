@@ -29,6 +29,10 @@ router.post("/audio", async (req, res) => {
   }
 });
 
+router.get("/test", async (req, res) => {
+  res.send("test");
+});
+
 app.use("/.netlify/functions/server", router); // path must route to lambda
 app.use(express.static(path.join(__dirname, "..", "build")));
 
