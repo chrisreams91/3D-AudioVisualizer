@@ -19,10 +19,10 @@ app.post("/audio", async (req, res) => {
     }
     res.end();
   } catch (err) {
-    console.error(err);
+    console.log(err);
     if (!res.headersSent) {
       res.writeHead(500);
-      res.end("internal system error");
+      res.end(`internal system error : ", ${err}`);
     }
   }
 });
