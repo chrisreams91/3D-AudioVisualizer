@@ -5,8 +5,9 @@ import LightRayGroup from "./LightRayGroup";
 
 interface Props {
   url: string;
+  color: string;
 }
-const DroneProjector = ({ url }: Props) => {
+const DroneProjector = ({ url, color }: Props) => {
   return (
     <>
       <Model
