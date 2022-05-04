@@ -1,11 +1,21 @@
+const { songs } = require("../assets/index");
+
+const isProd = process.env.NODE_ENV === "production";
+const path = isProd ? "/audio" : songs[0];
+
 export const createAudio = async (url: string) => {
-  const res = await fetch(`/audio`, {
-    method: "POST",
-    body: JSON.stringify({ url }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  const res = await fetch(
+    `${path}`,
+    isProd
+      ? {
+          method: "POST",
+          body: JSON.stringify({ url }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      : {}
+  );
 
   const buffer = await res.arrayBuffer();
   const context = new window.AudioContext();
