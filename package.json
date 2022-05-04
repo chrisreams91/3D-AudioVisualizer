@@ -33,6 +33,7 @@
     "build:app": "react-scripts build",
     "build:lambda": "GENERATE_SOURCEMAP=false netlify-lambda build express --config ./webpack.functions.js",
     "buildAndServe": "react-scripts build && npx nodemon server.ts",
+    "serve": "npx nodemon server.ts",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "react-scripts build && aws s3 sync build/ s3://chrisrea.ms"
