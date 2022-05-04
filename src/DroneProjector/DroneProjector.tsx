@@ -1,16 +1,12 @@
 import React from "react";
 import Visualizer from "../AudioVisualizer/Visualizer";
 import Model from "../RandomComponents/Model";
-import Console from "./Console";
 import LightRayGroup from "./LightRayGroup";
 
-const { songs } = require("../assets/index");
-
-const min = Math.ceil(0);
-const max = Math.floor(1);
-const random = Math.floor(Math.random() * (max - min + 1)) + min;
-
-const DroneProjector = () => {
+interface Props {
+  url: string;
+}
+const DroneProjector = ({ url }: Props) => {
   return (
     <>
       <Model
@@ -22,9 +18,8 @@ const DroneProjector = () => {
         <LightRayGroup distance={27} />
       </group>
       <group position={[3, -2, -3]}>
-        <Visualizer url={songs[random]} />
+        <Visualizer url={url} />
       </group>
-      <Console />
     </>
   );
 };

@@ -1,12 +1,7 @@
 export const createAudio = async (url: string) => {
-  const url1 = "https://youtu.be/hBi9wavp2w4";
-
-  const x = ".netlify/functions/server";
-  // const isLocal = process.env.NODE_ENV === "production";
-
   const res = await fetch(`/audio`, {
     method: "POST",
-    body: JSON.stringify({ url: url1 }),
+    body: JSON.stringify({ url }),
     headers: {
       "Content-Type": "application/json",
     },
