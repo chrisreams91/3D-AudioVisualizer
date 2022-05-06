@@ -1,9 +1,0 @@
-[[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
-
-[build]
-  command = "chmod 755 ./scripts/build.sh && chmod 755 ./scripts/ffmpeg-path.js && sh ./scripts/build.sh"
-  functions = "lambda" #  netlify-lambda reads this
-  publish = "build"
