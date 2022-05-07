@@ -4,28 +4,40 @@ import { Canvas } from "@react-three/fiber";
 import { FPSControls } from "react-three-fpscontrols";
 import SkyBox from "./RandomComponents/Skybox";
 import DroneProjector from "./DroneProjector/DroneProjector";
-
 import * as dat from "dat.gui";
+const { SkyBoxImages } = require("../src/assets");
 
-const defaultText = "https://www.youtube.com/watch?v=qKdLT8V2WJA";
+const defaultURL = "https://www.youtube.com/watch?v=qKdLT8V2WJA";
 const defaultColor = "#441860";
+const defaultSkybox = "interstellar";
+
 const gui = new dat.GUI();
-const parameters = { url: "Enter a youtube URL", color: defaultColor };
-const controlsText = gui.add(parameters, "url");
+const parameters = {
+  "Youtube URL": defaultURL,
+  color: defaultColor,
+  skybox: defaultSkybox,
+};
+const controlsText = gui.add(parameters, "Youtube URL");
 const controlsColor = gui.addColor(parameters, "color");
+const controlsBackground = gui.add(parameters, "skybox", [
+  "interstellar",
+  "blueSpace",
+  "redSpace",
+]);
 
 const App = () => {
-  const [url, setURL] = useState(defaultText);
+  const [url, setURL] = useState(defaultURL);
   const [color, setColor] = useState(defaultColor);
+  const [skybox, setSkybox] = useState(defaultSkybox);
 
   controlsText.onFinishChange((value) => {
-    console.log(value);
     setURL(value);
   });
-
   controlsColor.onFinishChange((value) => {
-    console.log(value);
     setColor(value);
+  });
+  controlsBackground.onFinishChange((value) => {
+    setSkybox(value);
   });
 
   return (
@@ -46,7 +58,7 @@ const App = () => {
         <Suspense fallback={null}>
           <DroneProjector url={url} color={color} />
         </Suspense>
-        <SkyBox />
+        <SkyBox images={SkyBoxImages[skybox]} />
       </Canvas>
     </>
   );

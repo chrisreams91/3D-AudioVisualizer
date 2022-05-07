@@ -6,6 +6,7 @@ import { Stats, useDepthBuffer } from "@react-three/drei";
 interface Props {
   rayCount?: number;
   distance: number;
+  color: string;
 }
 
 const randomNumInRange = (min: number, range: number) => {
@@ -14,7 +15,7 @@ const randomNumInRange = (min: number, range: number) => {
   return result;
 };
 
-const LightRayGroup = ({ rayCount = 5, distance }: Props) => {
+const LightRayGroup = ({ rayCount = 5, distance, color }: Props) => {
   const depthBuffer = useDepthBuffer();
 
   let light1: any;
@@ -126,7 +127,7 @@ const LightRayGroup = ({ rayCount = 5, distance }: Props) => {
           attenuation={30}
           intensity={0.5}
           angle={0.1}
-          color="#521566"
+          color={color}
         />
       ))}
     </group>

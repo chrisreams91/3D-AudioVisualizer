@@ -16,10 +16,10 @@ const DroneProjector = ({ url, color }: Props) => {
         scale={[0.1, 0.1, 0.1]}
       />
       <group position={[10, 10, -39]}>
-        <LightRayGroup distance={27} />
+        <LightRayGroup distance={27} color={color} />
       </group>
       <group position={[3, -2, -3]}>
-        <Visualizer url={url} />
+        <Visualizer url={url} color={color} />
       </group>
     </>
   );

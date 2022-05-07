@@ -1,13 +1,14 @@
 import { useThree } from "@react-three/fiber";
-
 import { CubeTextureLoader } from "three";
 
-const { SkyBoxImages } = require("../assets");
+interface Props {
+  images: string[];
+}
 
-const SkyBox = () => {
+const SkyBox = ({ images }: Props) => {
   const { scene } = useThree();
   const loader = new CubeTextureLoader();
-  const texture = loader.load([...SkyBoxImages]);
+  const texture = loader.load([...images]);
 
   scene.background = texture;
   return null;

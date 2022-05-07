@@ -7,9 +7,10 @@ import Bar from "./Bar";
 
 interface VisualizerProps {
   url: string;
+  color: string;
 }
 
-const Visualizer = ({ url }: VisualizerProps) => {
+const Visualizer = ({ url, color }: VisualizerProps) => {
   const { gain, context, update, data } = suspend(
     () => createAudio(url),
     [url]
@@ -68,7 +69,7 @@ const Visualizer = ({ url }: VisualizerProps) => {
     <instancedMesh
       ref={ref}
       args={[undefined, undefined, spectrumWidth]}
-      name="instanced mesh 1111"
+      name="instanced mesh"
       position={[-4, 2, -2]}
     >
       <mesh>
@@ -76,7 +77,7 @@ const Visualizer = ({ url }: VisualizerProps) => {
           <Bar
             key={index}
             position={index}
-            color="1e3656"
+            color={color}
             width={width}
             height={minHeight}
             depth={depth}

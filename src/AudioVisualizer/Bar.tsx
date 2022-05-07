@@ -16,9 +16,9 @@ const Bar = ({ position, color, width, height, depth }: BarProps) => {
     >
       <boxGeometry args={[width, height, depth]} />
       <meshStandardMaterial
-        color="#441860"
+        color={color}
         emissive={"#000000"}
-        emissiveIntensity={20}
+        emissiveIntensity={1}
       />
     </mesh>
   );
