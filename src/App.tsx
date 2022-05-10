@@ -7,9 +7,9 @@ import DroneProjector from "./DroneProjector/DroneProjector";
 import * as dat from "dat.gui";
 const { SkyBoxImages } = require("../src/assets");
 
-const defaultURL = "https://www.youtube.com/watch?v=qKdLT8V2WJA";
-const defaultColor = "#441860";
-const defaultSkybox = "interstellar";
+const defaultURL = "https://www.youtube.com/watch?v=dB5RfILB-3Y";
+const defaultColor = "#35c36e";
+const defaultSkybox = "blueSpace";
 
 const gui = new dat.GUI();
 const parameters = {
@@ -20,8 +20,8 @@ const parameters = {
 const controlsText = gui.add(parameters, "Youtube URL");
 const controlsColor = gui.addColor(parameters, "color");
 const controlsBackground = gui.add(parameters, "skybox", [
-  "interstellar",
   "blueSpace",
+  "interstellar",
   "redSpace",
 ]);
 
@@ -43,7 +43,7 @@ const App = () => {
   return (
     <>
       <Canvas>
-        <ambientLight intensity={2.5} />
+        <ambientLight intensity={0.5} />
         <FPSControls
           camProps={{
             makeDefault: true,

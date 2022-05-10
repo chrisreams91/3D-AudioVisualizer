@@ -60,6 +60,7 @@ const LightRayGroup = ({ rayCount = 5, distance, color }: Props) => {
     }
   });
 
+  // 🤮 🤮 🤮
   useEffect(() => {
     if (light1) {
       light1.target.position.x = light1x;
@@ -77,7 +78,6 @@ const LightRayGroup = ({ rayCount = 5, distance, color }: Props) => {
       light5.target.position.x = light5x;
     }
   }, [
-    // yuck
     obj,
     light1,
     light1x,
@@ -116,17 +116,16 @@ const LightRayGroup = ({ rayCount = 5, distance, color }: Props) => {
               light5 = ref;
             }
           }}
-          // penumbra={0}
           distance={
             index === 0 || index === 4
-              ? distance + 2
+              ? distance + 10
               : index === 2
-              ? distance - 0.5
+              ? distance - 50
               : distance
           }
-          attenuation={30}
-          intensity={0.5}
-          angle={0.1}
+          anglePower={1}
+          angle={3}
+          intensity={1}
           color={color}
         />
       ))}

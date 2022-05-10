@@ -28,6 +28,7 @@
     "build:app": "react-scripts build",
     "buildAndServe": "react-scripts build && npx nodemon server.ts",
     "serve": "npx nodemon server.ts",
+    "release": "heroku container:push web && heroku container:release web",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
