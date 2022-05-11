@@ -1,12 +1,17 @@
 import React from "react";
 import Visualizer from "../AudioVisualizer/Visualizer";
 import LightRayGroup from "./LightRayGroup";
+import { useControls } from "leva";
 
 interface Props {
   url: string;
-  color: string;
 }
-const DroneProjector = ({ url, color }: Props) => {
+
+const DroneProjector = ({ url }: Props) => {
+  const { color } = useControls({
+    color: "#ffffff",
+  });
+
   return (
     <>
       <group position={[10, 17, -45]}>

@@ -1,44 +1,32 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 //@ts-ignore
 import { FPSControls } from "react-three-fpscontrols";
 import SkyBox from "./RandomComponents/Skybox";
 import DroneProjector from "./DroneProjector/DroneProjector";
-import * as dat from "dat.gui";
 import Model from "./RandomComponents/Model";
-const { SkyBoxImages } = require("../src/assets");
+import { useControls } from "leva";
 
+const { SkyBoxImages } = require("../src/assets");
 const defaultURL = "https://www.youtube.com/watch?v=qKdLT8V2WJA";
-const defaultColor = "#35c36e";
 const defaultSkybox = "blueSpace";
 
-const gui = new dat.GUI();
-const parameters = {
-  "Youtube URL": defaultURL,
-  color: defaultColor,
-  skybox: defaultSkybox,
-};
-const controlsText = gui.add(parameters, "Youtube URL");
-const controlsColor = gui.addColor(parameters, "color");
-const controlsBackground = gui.add(parameters, "skybox", [
-  "blueSpace",
-  "interstellar",
-  "redSpace",
-]);
-
 const App = () => {
-  const [url, setURL] = useState(defaultURL);
-  const [color, setColor] = useState(defaultColor);
-  const [skybox, setSkybox] = useState(defaultSkybox);
+  const { skybox } = useControls({
+    skybox: {
+      value: defaultSkybox,
+      options: ["blueSpace", "interstellar", "redSpace"],
+    },
+  });
 
-  controlsText.onFinishChange((value) => {
-    setURL(value);
-  });
-  controlsColor.onFinishChange((value) => {
-    setColor(value);
-  });
-  controlsBackground.onFinishChange((value) => {
-    setSkybox(value);
+  const { url } = useControls({
+    url: {
+      value: "test",
+      onChange: (v) => {
+        console.log(v);
+      },
+      transient: false,
+    },
   });
 
   return (
@@ -63,7 +51,7 @@ const App = () => {
         />
       </Suspense>
       <Suspense fallback={null}>
-        <DroneProjector url={url} color={color} />
+        <DroneProjector url={url} />
       </Suspense>
       <SkyBox images={SkyBoxImages[skybox]} />
     </Canvas>
