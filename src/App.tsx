@@ -8,7 +8,7 @@ import * as dat from "dat.gui";
 import Model from "./RandomComponents/Model";
 const { SkyBoxImages } = require("../src/assets");
 
-const defaultURL = "https://www.youtube.com/watch?v=dB5RfILB-3Y";
+const defaultURL = "https://www.youtube.com/watch?v=qKdLT8V2WJA";
 const defaultColor = "#35c36e";
 const defaultSkybox = "blueSpace";
 
