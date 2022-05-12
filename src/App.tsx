@@ -56,7 +56,9 @@ const App = () => {
       <Suspense fallback={null}>
         <DroneProjector url={url} />
       </Suspense>
-      <SkyBox images={SkyBoxImages[skybox]} />
+      <Suspense fallback={null}>
+        <SkyBox images={SkyBoxImages[skybox]} />
+      </Suspense>
     </Canvas>
   );
 };
