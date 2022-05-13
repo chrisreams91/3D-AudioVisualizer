@@ -15,3 +15,5 @@ https://opengameart.org/content/interstellar-skybox
 - crashes on long youtube vids
 
 - coords for everything is super brittle
+
+- fix ts ignores

@@ -12,7 +12,6 @@ app.get("/", (_, res) => {
 });
 
 app.post("/audio", async (req, res) => {
-  console.log("got req");
   try {
     //@ts-ignore
     for await (const chunk of stream(req.body.url)) {

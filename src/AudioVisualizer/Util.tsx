@@ -1,5 +1,5 @@
 export const createAudio = async (url: string) => {
-  const res = await fetch(`/audio`, {
+  const response = await fetch(`/audio`, {
     method: "POST",
     body: JSON.stringify({ url }),
     headers: {
@@ -7,7 +7,11 @@ export const createAudio = async (url: string) => {
     },
   });
 
-  const buffer = await res.arrayBuffer();
+  if (!response.ok) {
+    throw new Error("Bad URL");
+  }
+
+  const buffer = await response.arrayBuffer();
   const context = new window.AudioContext();
   const source = context.createBufferSource();
   source.buffer = await new Promise((res) =>
