@@ -7,9 +7,9 @@ export const createAudio = async (url: string) => {
     },
   });
 
-  if (!response.ok) {
-    throw new Error("Bad URL");
-  }
+  // if (!response.ok) {
+  //   throw new Error("Bad URL");
+  // }
 
   const buffer = await response.arrayBuffer();
   const context = new window.AudioContext();

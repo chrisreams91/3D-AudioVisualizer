@@ -2,9 +2,9 @@ import React, { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 //@ts-ignore
 import { FPSControls } from "react-three-fpscontrols";
-import SkyBox from "./RandomComponents/Skybox";
+import SkyBox from "./Components/Skybox";
 import DroneProjector from "./DroneProjector/DroneProjector";
-import Model from "./RandomComponents/Model";
+import Model from "./Components/Model";
 import { useControls } from "leva";
 
 const { SkyBoxImages } = require("../src/assets");

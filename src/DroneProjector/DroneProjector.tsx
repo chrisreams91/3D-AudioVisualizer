@@ -9,7 +9,7 @@ interface Props {
 
 const DroneProjector = ({ url }: Props) => {
   const { color } = useControls({
-    color: "#ffffff",
+    color: "#3fba87",
   });
 
   return (
