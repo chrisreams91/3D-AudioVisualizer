@@ -46,7 +46,10 @@ export const fetchDefaultSong = async () => {
   const client = new S3Client(config.client);
   const res = await client.send(new GetObjectCommand(config.params));
 
-  //@ts-ignore
-  const stringified: { url: string } = await new Response(res.Body, {}).json();
+  const stringified: { url: string } = await new Response(
+    res.Body as BodyInit,
+    {}
+  ).json();
+
   return stringified.url;
 };

@@ -5,7 +5,6 @@ import stream from "youtube-audio-stream";
 const app = express();
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "build")));
 
 app.get("/", (_, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
@@ -19,11 +18,8 @@ app.post("/audio", async (req, res) => {
     }
     res.end();
   } catch (err) {
-    console.log(err);
-    if (!res.headersSent) {
-      res.writeHead(500);
-      res.end(`internal system error : ", ${err}`);
-    }
+    res.writeHead(500);
+    res.end(`internal system error : ", ${err}`);
   }
 });
 

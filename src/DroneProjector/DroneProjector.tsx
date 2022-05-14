@@ -12,14 +12,11 @@ interface Props {
 const DroneProjector = ({ setFpsControlsEnabled }: Props) => {
   const defaultSong = suspend(() => fetchDefaultSong(), []);
 
-  //@ts-ignore
   const { url } = useControls({
-    //@ts-ignore
     url: {
       value: defaultSong,
       onEditStart: () => setFpsControlsEnabled(false),
       onEditEnd: () => setFpsControlsEnabled(true),
-      transient: false,
     },
   });
 

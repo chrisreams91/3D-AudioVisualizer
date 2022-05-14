@@ -10,59 +10,45 @@ interface VisualizerProps {
   color: string;
 }
 
+const minHeight = 0.2;
+const width = 0.4;
+const depth = 0.2;
+const spectrumWidth = 45;
+const spectrumValueOffset = 75;
+
 const Visualizer = ({ url, color }: VisualizerProps) => {
+  const ref = useRef();
   const { gain, context, update, data } = suspend(
     () => createAudio(url),
     [url]
   );
 
-  const minHeight = 0.2;
-  const width = 0.4;
-  const depth = 0.2;
-
-  // tinker
-  const spectrumWidth = 45;
-  const spectrumValueOffset = 75;
-  const decay = 0;
-
-  const ref = useRef();
   useEffect(() => {
-    // Connect the gain node, which plays the audio
-    gain && gain.connect(context.destination);
-    return () => gain && gain.disconnect();
+    gain.connect(context.destination);
+    return () => gain.disconnect();
   }, [gain, context]);
 
-  useFrame((state) => {
+  useFrame((_state) => {
     update();
 
     const spliced = data.slice(0, spectrumWidth);
+    if (ref.current) {
+      for (let i = 0; i < spliced.length; i++) {
+        //@ts-ignore
+        const children = ref.current.children[0].children;
+        const child: THREE.Mesh = children[i];
 
-    for (let i = 0; i < spliced.length; i++) {
-      //@ts-ignore
-      const children = ref.current.children[0].children;
-      const child: THREE.Mesh = children[i];
+        const spectrumValue = data[i] / spectrumValueOffset;
+        const newValue = Math.max(spectrumValue, minHeight);
 
-      //@ts-ignore
-      const previousValue = child.geometry.parameters.height;
-      const spectrumValue = data[i] / spectrumValueOffset;
-      const newValue = Math.max(spectrumValue, minHeight);
+        const newGeom = new THREE.BoxGeometry(0.4, newValue, 0.2);
 
-      let newGeom;
-      if (previousValue > newValue) {
-        newGeom = new THREE.BoxGeometry(
-          0.4,
-          Math.max(newValue - decay, minHeight),
-          0.2
-        );
-      } else {
-        newGeom = new THREE.BoxGeometry(0.4, newValue, 0.2);
+        child.geometry.dispose();
+        child.geometry = newGeom;
       }
-
-      child.geometry.dispose();
-      child.geometry = newGeom;
+      //@ts-ignore
+      ref.current.instanceMatrix.needsUpdate = true;
     }
-    //@ts-ignore
-    ref.current.instanceMatrix.needsUpdate = true;
   });
 
   return (
