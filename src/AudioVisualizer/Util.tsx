@@ -1,3 +1,6 @@
+import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+const config = require("../config.json");
+
 export const createAudio = async (url: string) => {
   const response = await fetch(`/audio`, {
     method: "POST",
@@ -37,4 +40,13 @@ export const createAudio = async (url: string) => {
       analyser.getByteFrequencyData(data);
     },
   };
+};
+
+export const fetchDefaultSong = async () => {
+  const client = new S3Client(config.client);
+  const res = await client.send(new GetObjectCommand(config.params));
+
+  //@ts-ignore
+  const stringified: { url: string } = await new Response(res.Body, {}).json();
+  return stringified.url;
 };

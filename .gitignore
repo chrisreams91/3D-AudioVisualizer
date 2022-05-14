@@ -25,3 +25,6 @@ yarn-error.log*
 /stash
 /lambda
 notes.md
+
+config.json
+defaultSong.json

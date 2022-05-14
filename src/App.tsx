@@ -1,6 +1,5 @@
 import React, { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-//@ts-ignore
 import { FPSControls } from "react-three-fpscontrols";
 import SkyBox from "./Components/Skybox";
 import DroneProjector from "./DroneProjector/DroneProjector";
@@ -8,7 +7,6 @@ import Model from "./Components/Model";
 import { useControls } from "leva";
 
 const { SkyBoxImages } = require("../src/assets");
-const defaultURL = "https://www.youtube.com/watch?v=qKdLT8V2WJA";
 const defaultSkybox = "blueSpace";
 
 const App = () => {
@@ -18,17 +16,6 @@ const App = () => {
     skybox: {
       value: defaultSkybox,
       options: ["blueSpace", "interstellar", "redSpace"],
-    },
-  });
-
-  //@ts-ignore
-  const { url } = useControls({
-    //@ts-ignore
-    url: {
-      value: defaultURL,
-      onEditStart: () => setFpsControlsEnabled(false),
-      onEditEnd: () => setFpsControlsEnabled(true),
-      transient: false,
     },
   });
 
@@ -54,7 +41,7 @@ const App = () => {
         />
       </Suspense>
       <Suspense fallback={null}>
-        <DroneProjector url={url} />
+        <DroneProjector setFpsControlsEnabled={setFpsControlsEnabled} />
       </Suspense>
       <Suspense fallback={null}>
         <SkyBox images={SkyBoxImages[skybox]} />

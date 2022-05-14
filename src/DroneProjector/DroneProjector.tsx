@@ -2,12 +2,27 @@ import React from "react";
 import Visualizer from "../AudioVisualizer/Visualizer";
 import LightRayGroup from "./LightRayGroup";
 import { useControls } from "leva";
+import { suspend } from "suspend-react";
+import { fetchDefaultSong } from "../AudioVisualizer/Util";
 
 interface Props {
-  url: string;
+  setFpsControlsEnabled: any;
 }
 
-const DroneProjector = ({ url }: Props) => {
+const DroneProjector = ({ setFpsControlsEnabled }: Props) => {
+  const defaultSong = suspend(() => fetchDefaultSong(), []);
+
+  //@ts-ignore
+  const { url } = useControls({
+    //@ts-ignore
+    url: {
+      value: defaultSong,
+      onEditStart: () => setFpsControlsEnabled(false),
+      onEditEnd: () => setFpsControlsEnabled(true),
+      transient: false,
+    },
+  });
+
   const { color } = useControls({
     color: "#3fba87",
   });
