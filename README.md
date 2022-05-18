@@ -14,7 +14,7 @@ https://opengameart.org/content/interstellar-skybox
 
 - stop current song when loading next - resolved by above ?
 
-- crashes on long youtube vids
+- crashes on long youtube vids - resolved by above above ?
 
 - coords for everything is super brittle
 
