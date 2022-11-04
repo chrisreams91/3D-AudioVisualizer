@@ -1,7 +1,6 @@
 import express from "express";
 import path from "path";
-import stream from "youtube-audio-stream";
-
+import { streamify } from "./stolen";
 const app = express();
 
 app.use(express.json());
@@ -14,7 +13,7 @@ app.get("/", (_, res) => {
 app.post("/audio", async (req, res) => {
   try {
     //@ts-ignore
-    for await (const chunk of stream(req.body.url)) {
+    for await (const chunk of streamify(req.body.url)) {
       res.write(chunk);
     }
     res.end();
