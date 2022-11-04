@@ -43,6 +43,10 @@ export const createAudio = async (url: string) => {
 };
 
 export const fetchDefaultSong = async () => {
+  if (config.client) {
+    return "https://www.youtube.com/watch?v=IB_FP_rEih4";
+  }
+
   const client = new S3Client(config.client);
   const res = await client.send(new GetObjectCommand(config.params));
 

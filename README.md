@@ -1,10 +1,14 @@
-# https://chrisrea.ms/
+## Audio Visualizer in 3D space
 
 Skyboxes:
 
 https://opengameart.org/content/space-skyboxes-0
 
 https://opengameart.org/content/interstellar-skybox
+
+## To Run
+
+requires ffmpeg installed and in path
 
 ### TODO
 
