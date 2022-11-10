@@ -1,8 +1,6 @@
-## Audio Visualizer in 3D space
-
+## Audio Visualizer in 3D
 
 https://user-images.githubusercontent.com/26492991/201022276-9c4ae289-4830-4c30-ad50-ad327d6532ef.mp4
-
 
 Skyboxes:
 
@@ -16,9 +14,13 @@ requires ffmpeg installed and in path
 
 ### TODO
 
-- smoother loading
+- Due to security browser wont autoplay music without user interaction - add popup or something to start playing
 
-- stream data so dont wait so damn long
+- setup hot reloading for local dev
+
+- error handling on user input for songs
+
+- stream data from youtube
 
 - stop current song when loading next - resolved by above ?
 
